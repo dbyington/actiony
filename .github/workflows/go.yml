@@ -23,12 +23,10 @@ jobs:
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
             dep ensure
         fi
-        go install github.com/golang/mock/mockgen
 
     - name: Build
       run: go build -v ./...
     
     - name: Test
       run: |
-        go generate ./...
         ginkgo --randomizeAllSpecs --randomizeSuites --cover --trace --race --progress -skipPackage=vendor -r ${1:-}
