@@ -29,4 +29,5 @@ jobs:
     
     - name: Test
       run: |
-        ginkgo --randomizeAllSpecs --randomizeSuites --cover --trace --race --progress -skipPackage=vendor -r ${1:-}
+        go test -v ./...
+        # ginkgo --randomizeAllSpecs --randomizeSuites --cover --trace --race --progress -skipPackage=vendor -r ${1:-}
