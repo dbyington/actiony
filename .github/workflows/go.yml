@@ -25,7 +25,9 @@ jobs:
         fi
 
     - name: Build
-      run: go build -v .
+      run: go build -v ./...
     
     - name: Test
-      run: ginkgo --randomizeAllSpecs --randomizeSuites --cover --trace --race --progress -skipPackage=vendor -r ${1:-}
+      run: |
+        go generate ./...
+        ginkgo --randomizeAllSpecs --randomizeSuites --cover --trace --race --progress -skipPackage=vendor -r ${1:-}
